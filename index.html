@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="full-screen">
+  <h1>Hotel Review Sentiment Analysis</h1>
+  <img src="{{ url_for('static', filename='images/hotel_review.png') }}" alt="Hotel Review">
+
+  <form action="{{ url_for('predict') }}" method="POST" class="w-50">
+    <textarea name="review" rows="4" placeholder="Type your hotel review here..." required></textarea><br><br>
+    <button type="submit" class="btn btn-primary">Analyze</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6 text-center">
+
+    <!-- User Photo -->
+    <img src="{{ url_for('static', filename='images/happy.png') }}" alt="User Photo" class="img-fluid rounded-circle mb-3" width="150" height="150">
+
+    <h2>Hotel Review Sentiment Analysis</h2>
+    <p>Enter your review below and get the predicted sentiment.</p>
+
+    <!-- Review Form -->
+    <form action="{{ url_for('predict') }}" method="POST">
+      <div class="form-group">
+        <textarea class="form-control" name="review" rows="4" placeholder="Type your hotel review here..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Predict Sentiment</button>
+    </form>
+
+    <!-- Prediction Result -->
+    {% if prediction %}
+      <div class="mt-4">
+        <h4>Sentiment: <strong>{{ prediction }}</strong></h4>
+
+        {% if prediction == 'Positive' %}
+          <img src="{{ url_for('static', filename='images/happy.png') }}" alt="Happy" class="img-fluid" width="120">
+        {% elif prediction == 'Negative' %}
+          <img src="{{ url_for('static', filename='images/sad.png') }}" alt="Sad" class="img-fluid" width="120">
+        {% else %}
+          <img src="{{ url_for('static', filename='images/neutral.png') }}" alt="Neutral" class="img-fluid" width="120">
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="full-screen">
+  <h1>Sentiment Result</h1>
+  <h3>Review: "{{ review }}"</h3>
+  <h2>Predicted Sentiment: {{ sentiment }}</h2>
+  <img src="{{ url_for('static', filename='images/' + image_file) }}" alt="Sentiment">
+  <br><br>
+  <a href="{{ url_for('home') }}" class="btn btn-secondary">Analyze Another Review</a>
+</div>
+{% endblock %}
